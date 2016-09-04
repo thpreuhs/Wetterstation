@@ -3,3 +3,4 @@
 *.csv
 *.txt
 Data/Converted/*.cvs
+/Data/Raw/davis-2016-08.txt

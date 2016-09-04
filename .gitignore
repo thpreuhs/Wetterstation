@@ -1,6 +1,7 @@
-# Compiled source #
+# Folders #
 ###################
 .idea
+__pycache__
 
 # Packages #
 ############

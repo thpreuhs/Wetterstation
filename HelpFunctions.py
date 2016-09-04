@@ -2,7 +2,8 @@ import pandas as pd
 
 
 def read_wetter_export(path, convert_as_timeseries=True):
-    file = pd.read_csv(path, sep='\t', header=[0, 1])
+    file = pd.read_csv(path, sep='\t', header=[0, 1],low_memory=False)
+
     # get headers as list
     header_list = list(file.columns.values)
     # buffer for new headers

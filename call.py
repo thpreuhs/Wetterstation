@@ -38,4 +38,4 @@ ax.xaxis.set_ticklabels(['N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 
 ax.set_title("Windrose", va='bottom')
 plt.show()
 
-#usefull change
+

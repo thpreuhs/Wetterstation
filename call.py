@@ -37,3 +37,5 @@ ax.set_xticks(degree)
 ax.xaxis.set_ticklabels(['N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW'])
 ax.set_title("Windrose", va='bottom')
 plt.show()
+
+#usefull change

@@ -5,11 +5,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-filename = r'davis-2016-08.txt'
-filename_out = r'davis-2016-08.csv'
-wetter_data = hf.read_wetter_export(filename, True)
-
-###get wether data from 01.08.16
-wetter_data.to_csv(filename_out)
-
-a = 10
+filename = r'Data\Converted\davis-2016-08.csv'
+wetter_data = pd.read_csv(filename, index_col=0)
+a=10

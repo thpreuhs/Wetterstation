@@ -8,6 +8,6 @@ data_converted = os.getcwd()+r'\Data\Converted'
 for filename in os.listdir(data):
     if filename.endswith(".txt"):
         file = hf.read_wetter_export(data+'\\'+filename,True)
-        file.to_csv(data_converted+'\\' +filename[0:-3] + 'cvs',low_memory=False)
+        file.to_csv(data_converted+'\\' +filename[0:-3] + 'csv',low_memory=False)
         os.rename(data+'\\'+filename, data_raw +'\\'+ filename)
 

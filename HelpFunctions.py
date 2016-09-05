@@ -20,6 +20,7 @@ def read_wetter_export(path, convert_as_timeseries=True):
             header_list_new.append(concatenateA + " " + concatenateB)
     # assign new header to file
     file.columns = header_list_new
+    file['Wind Dir Degree'] = file['Wind Dir'].apply(__wtoi)
     if convert_as_timeseries:
         return convert_to_timeseries(file)
     else:
@@ -29,7 +30,6 @@ def convert_to_timeseries(file):
     tmp_time = file['Date'] + file['Time']
     file['Date_Time'] = pd.to_datetime(tmp_time, format="%d.%m.%y%H:%M")
     file = file.drop(["Date", 'Time'], axis=1)
-    file['Wind Dir Degree'] = file['Wind Dir'].apply(__wtoi)
     return file.set_index('Date_Time', drop=True)
 
 

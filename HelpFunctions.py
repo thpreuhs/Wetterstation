@@ -2,7 +2,7 @@ import pandas as pd
 
 
 def read_wetter_export(path, convert_as_timeseries=True):
-    file = pd.read_csv(path, sep='\t', header=[0, 1],low_memory=False)
+    file = pd.read_csv(path, sep='\t', header=[0, 1], low_memory=False)
 
     # get headers as list
     header_list = list(file.columns.values)
@@ -10,8 +10,8 @@ def read_wetter_export(path, convert_as_timeseries=True):
     header_list_new = list()
     # create new headers, where the rows per header column are concatenated
     for header in header_list:
-        concatenateA = header[0]
-        concatenateB = header[1]
+        concatenateA = header[0].strip()
+        concatenateB = header[1].strip()
         if "Unnamed:" in concatenateA:
             header_list_new.append(concatenateB)
         elif "Unnamed:" in concatenateB:

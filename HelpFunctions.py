@@ -21,6 +21,16 @@ def read_wetter_export(path, convert_as_timeseries=True):
     # assign new header to file
     file.columns = header_list_new
     file['Wind Dir Degree'] = file['Wind Dir'].apply(__wtoi)
+
+    #  drop nonsens colums and reorder colums
+    file = file.drop(['Hi Temp', 'Low Temp', 'Wind Chill', 'Heat Index', 'THW Index', 'THSW Index', 'Heat D-D', 'Cool D-D', 'In Dew', 'Wind Tx', 'Arc. Int.'], axis=1)
+    # get a list of columns
+    cols = list(file)
+    # move the column 'Wind Dir Degree' to column 7 using index, pop and insert
+    cols.insert(7, cols.pop(cols.index('Wind Dir Degree')))
+    # use ix to reorder
+    file = file.ix[:, cols]
+
     if convert_as_timeseries:
         return convert_to_timeseries(file)
     else:
@@ -29,7 +39,7 @@ def read_wetter_export(path, convert_as_timeseries=True):
 def convert_to_timeseries(file):
     tmp_time = file['Date'] + file['Time']
     file['Date_Time'] = pd.to_datetime(tmp_time, format="%d.%m.%y%H:%M")
-    file = file.drop(["Date", 'Time'], axis=1)
+    file = file.drop(['Date', 'Time'], axis=1)
     return file.set_index('Date_Time', drop=True)
 
 
